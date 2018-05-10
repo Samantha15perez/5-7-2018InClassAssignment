@@ -29,40 +29,28 @@
         private void InitializeComponent()
         {
             this.buttonOpenFile = new System.Windows.Forms.Button();
-            this.datagridMemberInfo = new System.Windows.Forms.DataGridView();
             this.buttonLoadFile = new System.Windows.Forms.Button();
             this.buttonFixDates = new System.Windows.Forms.Button();
             this.labelFileName = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.datagridMemberInfo)).BeginInit();
+            this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonOpenFile
             // 
-            this.buttonOpenFile.Location = new System.Drawing.Point(15, 156);
+            this.buttonOpenFile.Location = new System.Drawing.Point(12, 153);
             this.buttonOpenFile.Name = "buttonOpenFile";
-            this.buttonOpenFile.Size = new System.Drawing.Size(78, 28);
+            this.buttonOpenFile.Size = new System.Drawing.Size(90, 28);
             this.buttonOpenFile.TabIndex = 0;
             this.buttonOpenFile.Text = "Open";
             this.buttonOpenFile.UseVisualStyleBackColor = true;
             this.buttonOpenFile.Click += new System.EventHandler(this.button1_Click);
             // 
-            // datagridMemberInfo
-            // 
-            this.datagridMemberInfo.AllowUserToAddRows = false;
-            this.datagridMemberInfo.AllowUserToDeleteRows = false;
-            this.datagridMemberInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datagridMemberInfo.Location = new System.Drawing.Point(15, 24);
-            this.datagridMemberInfo.Name = "datagridMemberInfo";
-            this.datagridMemberInfo.ReadOnly = true;
-            this.datagridMemberInfo.Size = new System.Drawing.Size(533, 123);
-            this.datagridMemberInfo.TabIndex = 1;
-            this.datagridMemberInfo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ddatagridMemberInfo_CellContentClick);
-            // 
             // buttonLoadFile
             // 
-            this.buttonLoadFile.Location = new System.Drawing.Point(239, 156);
+            this.buttonLoadFile.Location = new System.Drawing.Point(236, 156);
             this.buttonLoadFile.Name = "buttonLoadFile";
-            this.buttonLoadFile.Size = new System.Drawing.Size(78, 28);
+            this.buttonLoadFile.Size = new System.Drawing.Size(90, 28);
             this.buttonLoadFile.TabIndex = 2;
             this.buttonLoadFile.Text = "Load";
             this.buttonLoadFile.UseVisualStyleBackColor = true;
@@ -70,12 +58,13 @@
             // 
             // buttonFixDates
             // 
-            this.buttonFixDates.Location = new System.Drawing.Point(470, 156);
+            this.buttonFixDates.Location = new System.Drawing.Point(458, 156);
             this.buttonFixDates.Name = "buttonFixDates";
-            this.buttonFixDates.Size = new System.Drawing.Size(78, 28);
+            this.buttonFixDates.Size = new System.Drawing.Size(90, 28);
             this.buttonFixDates.TabIndex = 3;
-            this.buttonFixDates.Text = "Fix";
+            this.buttonFixDates.Text = "Fix and Output";
             this.buttonFixDates.UseVisualStyleBackColor = true;
+            this.buttonFixDates.Click += new System.EventHandler(this.buttonFixDates_Click);
             // 
             // labelFileName
             // 
@@ -86,19 +75,28 @@
             this.labelFileName.TabIndex = 4;
             this.labelFileName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // dataGridViewMembers
+            // 
+            this.dataGridViewMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMembers.Location = new System.Drawing.Point(12, 24);
+            this.dataGridViewMembers.Name = "dataGridViewMembers";
+            this.dataGridViewMembers.Size = new System.Drawing.Size(536, 115);
+            this.dataGridViewMembers.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 193);
+            this.Controls.Add(this.dataGridViewMembers);
             this.Controls.Add(this.labelFileName);
             this.Controls.Add(this.buttonFixDates);
             this.Controls.Add(this.buttonLoadFile);
-            this.Controls.Add(this.datagridMemberInfo);
             this.Controls.Add(this.buttonOpenFile);
             this.Name = "Form1";
             this.Text = "program to un-heckify your dates";
-            ((System.ComponentModel.ISupportInitialize)(this.datagridMemberInfo)).EndInit();
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -106,10 +104,10 @@
         #endregion
 
         private System.Windows.Forms.Button buttonOpenFile;
-        private System.Windows.Forms.DataGridView datagridMemberInfo;
         private System.Windows.Forms.Button buttonLoadFile;
         private System.Windows.Forms.Button buttonFixDates;
         private System.Windows.Forms.Label labelFileName;
+        private System.Windows.Forms.DataGridView dataGridViewMembers;
     }
 }
 
