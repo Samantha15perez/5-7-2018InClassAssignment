@@ -19,16 +19,16 @@ namespace CSharpDateConverter
         }
 
         public static string FileLoad = "";
-        public static string[] MemberInfo;
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Displays an OpenFileDialog so the user can select a Cursor.  
+            // Displays an OpenFileDialog so the user can select a File
+             
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
             openFileDialog1.Filter = "CSV Files|*.csv|Text Files (*.txt)|*.txt|All Files (*.*)|*.*";
             openFileDialog1.Title = "Select a Source File";
-            openFileDialog1.InitialDirectory = @"Desktop\";
+            openFileDialog1.InitialDirectory = @"C:\...Desktop\";
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.CheckPathExists = true;
 
@@ -36,7 +36,6 @@ namespace CSharpDateConverter
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-
                 labelFileName.Text = openFileDialog1.FileName;
                 FileLoad = openFileDialog1.FileName;
             }

@@ -26,6 +26,15 @@ IF (Select COUNT(*) from sys.databases where name = 'DateConversion') >0
  [State] Nvarchar(40) NOT NULL,
  JoinDate Nvarchar(40) NOT NULL,
  )
+
+ CREATE TABLE MembersTableConverted
+(FirstName VARCHAR(40),
+LastName VARCHAR(50),
+BirthDate DATE,
+City VARCHAR(50),
+[State] VARCHAR(50),
+JoinDate DATE
+)
  
  BULK INSERT Memberstable
 FROM 'C:\Users\CyberAdmin\Desktop\MemberSort.csv'
@@ -39,13 +48,59 @@ TABLOCK
 )
 
 go
-create proc DateConvert @Date Nvarchar
-as
+create function [dbo].[Date_Fixer_Upper]
+(@inputDate AS Varchar(50))
+RETURNS DATE
+AS
 BEGIN
-if ((Select SUBSTRING(joindate, 1, 2)) > 12)
+
+DECLARE @Result DATE = NULL;
+DECLARE @YearLength INT = 0;
+DECLARE @YearValue INT = 0;
 
 
+IF LEN(@inputDate) > 0
+BEGIN
+
+set @inputDate = LTRIM(RTRIM(@Inputdate))
+
+IF LEFT(@Inputdate, 1) = '0'
+BEGIN
+SET @inputDate = RIGHT(@inputDate, LEN(@inputDate) - 1);
 END
+
+--set delimiters to all the same character
+SET @inputDate = REPLACE(@inputDate, ' ', '/');
+SET @inputDate = REPLACE(@inputDate, '-', '/');
+SET @inputDate = REPLACE(@inputDate, '.', '/');
+
+WHILE CHARINDEX('//', @inputDate) != 0
+BEGIN
+SET @inputDate = REPLACE(@inputDate, '//', '/')
+END
+
+DECLARE @reverseIn VARCHAR(255) = REVERSE(@inputDate); 
+SET @yearLength = CHARINDEX('/', @reverseIn) - 1;
+
+SET @YearValue = convert(int, reverse(left(@reverseIn, 2)));
+
+IF @yearlength > 0 and @YearLength < 4
+BEGIN
+
+if @yearvalue < 10
+begin
+
+
+
+
+
+
+
+
+
+
+
+
 
 Select SUBSTRING(joindate, 1, 2) from MembersTable
 
